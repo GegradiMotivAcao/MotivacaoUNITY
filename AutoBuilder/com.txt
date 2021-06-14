@@ -1,0 +1,11 @@
+mkdir INSTALLATION_PATH + '\' + PROJECT_NAME
+
+for item in backgrounds
+	xcopy ITEM_PATH ASSETS_PATH
+
+for item in backgrounds
+	xcopy ITEM_PATH ASSETS_PATH + '\backgrounds'
+
+for item in elements
+	xcopy ITEM_PATH ASSETS_PATH + '\elements'
+...

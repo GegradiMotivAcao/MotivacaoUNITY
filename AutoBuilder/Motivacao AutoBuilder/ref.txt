@@ -1,0 +1,6 @@
+Jogo Exemplo
+C:\Users\leo_c\Desktop\Jogo Exemplo\
+C:\Users\leo_c\Desktop\MOTIV\1721_PRONTO2\LIXO POSTE.png | 3_-3 | 2 | lixo
+C:\Users\leo_c\Desktop\MOTIV\1721_PRONTO2\ARVORE.png | 2_5 | 2 | arvore
+C:\Users\leo_c\Desktop\MOTIV\1721_PRONTO2\BICICLETARIO.png | 5_-6 | 1 | elemento
+C:\Users\leo_c\Desktop\MOTIV\1721_PRONTO2\BEBEDOURO.png | 1_5 | 0 | elemento

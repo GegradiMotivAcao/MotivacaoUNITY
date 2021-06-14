@@ -1,0 +1,1 @@
+"D:\Programas\Unity\Hub\Editor\2018.4.12f1\Unity\Editor\Unity.exe" -quit -batchmode -projectPath "D:\Meu computador\Downloads\motivacao-master" -executeMethod BuildScript.Start
