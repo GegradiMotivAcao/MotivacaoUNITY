@@ -77,10 +77,10 @@ public class DragMeMenu : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 			Destroy (m_DraggingIcons [eventData.pointerId]);
 
 			GameObject[] gos = eventData.hovered.ToArray ();
-			foreach (GameObject go in gos) {
+			/*foreach (GameObject go in gos) {
 				if (go.GetComponent<DropMeMenu> () == spot.GetComponent <DropMeMenu> ())
 					gameObject.transform.parent.gameObject.SetActive (false);
-			}
+			}*/
 		}
 
 		m_DraggingIcons [eventData.pointerId] = null;

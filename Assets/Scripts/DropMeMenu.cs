@@ -7,7 +7,7 @@ public class DropMeMenu : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 {
 	public Image containerImage;
 	public Image receivingImage;
-	public GameObject respectiveImage;
+	public GameObject[] respectiveImage;
 	private Color normalColor;
 	public Color highlightColor = Color.yellow;
 
@@ -23,7 +23,7 @@ public class DropMeMenu : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 			return;
 
 		var originalObj = data.pointerDrag;
-		if (originalObj != respectiveImage)
+		if ( (originalObj != respectiveImage[0]) && (originalObj != respectiveImage[1]) )
 			return;
 		
 		Sprite dropSprite = GetDropSprite (data);
@@ -44,7 +44,7 @@ public class DropMeMenu : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 		//Debug.Break();
 
 		var originalObj = data.pointerDrag;
-		if (originalObj != respectiveImage)
+		if ( (originalObj != respectiveImage[0]) && (originalObj != respectiveImage[1]) )
 			return;
 		
 		Sprite dropSprite = GetDropSprite (data);
