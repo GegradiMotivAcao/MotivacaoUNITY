@@ -79,7 +79,7 @@ public class DropMeMenu : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 		return srcImage.sprite;
 	}
 
-	/*private float GetSpriteWidth (PointerEventData data)
+	private float GetSpriteWidth (PointerEventData data)
 	{
 		var originalObj = data.pointerDrag;
 
@@ -101,7 +101,7 @@ public class DropMeMenu : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 
 		Debug.Log(srcImage.sprite.rect.height);
 		return srcImage.sprite.rect.height * 20;
-	}*/
+	}
 
 	private void EraseDropSprite (PointerEventData data)
 	{
