@@ -57,7 +57,7 @@ public class ScreenShot : MonoBehaviour
 		yield return new WaitForEndOfFrame ();
 
 		// Take screenshot
-		string filename = "/screenshots/motivacao-";
+		string filename = "/motivacao-";
 		filename += System.DateTime.Now.ToString ("dd-MM-yyyy") + System.DateTime.Now.ToString ("hhmmss");
 		filename += ".png";
 		Debug.Log (filename);
@@ -66,6 +66,8 @@ public class ScreenShot : MonoBehaviour
 		// Show UI after we're done
 		AtiveGO ();
 
-		SceneManager.LoadScene (nomeDaCena);
+		//SceneManager.LoadScene (nomeDaCena);
 	}
+
+	
 }
