@@ -4,11 +4,24 @@ using System.Runtime.InteropServices;
  
  
 public class TakeScreenshot : MonoBehaviour {
- 
+ 	private GameObject parent;
+	public GameObject cursor;
+	public string nomeDaCena;
+	public string filepath;
+
+	void Start ()
+	{
+		parent = GameObject.Find ("Canvas");
+		/*filepath=Application.dataPath;
+		Debug.Log("dataPath : " + filepath);*/
+	}
+
     // Use this for initialization
     public void Screenshot () {
+
         StartCoroutine(UploadPNG());
         //Debug.log (encodedText);
+
     }
 
     public void InativeGO ()
@@ -27,7 +40,7 @@ public class TakeScreenshot : MonoBehaviour {
 	{
 		foreach (Transform child in parent.transform) {
 			string cn = child.name;
-			if (cn == "menu_arvore" || cn == "menu_elementos" || cn == "HandCursor")
+			if (cn == "menu_arvore" || cn == "drop_spots" || cn == "menu_elementos" || cn == "HandCursor" || cn =="btn_elementos")
 				continue;
 
 			child.gameObject.SetActive (true);
@@ -36,9 +49,13 @@ public class TakeScreenshot : MonoBehaviour {
 	}
  
     IEnumerator UploadPNG() {
+
+    	yield return null;
+		InativeGO ();
+
         // We should only read the screen after all rendering is complete
         yield return new WaitForEndOfFrame();
- 		InativeGO ();//turn off interface
+
         // Create a texture the size of the screen, RGB24 format
         int width = Screen.width;
         int height = Screen.height;
@@ -62,7 +79,8 @@ public class TakeScreenshot : MonoBehaviour {
         #if !UNITY_EDITOR
         SaveScreenshotWebGL(image_url,encodedText);
         #endif
-        AtiveGO (); //turn on interface
+        
+        AtiveGO ();
     }
  
     [DllImport("__Internal")]
