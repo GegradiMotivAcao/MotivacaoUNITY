@@ -6,7 +6,7 @@ using UnityEditor;
 public class objetos
 	{
     // Auto-implemented properties.
-    public string A { get; set; }
+    public string A { get; set; } //endereço, arquivo, tipo e posição
     public string B { get; set; }
     public string C { get; set; }
 
@@ -27,11 +27,12 @@ public class LeituraParam : MonoBehaviour
 {	
 
 	List<objetos>Objs = new List<objetos>(0);
-
+	public List<GameObject> GSs;
+	public List<GameObject> Botoes;
 	public TextAsset arq;
 	private string theWholeFileAsOneLongString;
  	private List<string> eachLine;
-
+ 	 private DragMeMenu scriptElem;
 	[MenuItem("AssetDatabase/LoadAssetExample")]
     static void ImportExample()
     {
@@ -49,8 +50,6 @@ public class LeituraParam : MonoBehaviour
      Debug.Log(eachLine[0]);
      Debug.Log(eachLine[1]);
 
-
-    	//for (int i = 0; eachLine[i] != null; i++)
     	foreach(string line in eachLine)
 		{
     	  	string[] leitura = line.Split(';');
@@ -60,6 +59,10 @@ public class LeituraParam : MonoBehaviour
 		Debug.Log(Objs[0].A);
     	Debug.Log(Objs[0].B);
     	Debug.Log(Objs[0].C);
+
+    	//ADICIONAR ARTRIBUIÇÃO DE IMAGEM AO Source Image DO BOTÃO, BASEADO NO ENDEREÇO DO TXT
+    	Botoes[0].transform.GetChild(0).GetComponent<DragMeMenu>().spot = GSs[0]; //atribui ao botão qual seu GameSpot referente
+    	GSs[0].GetComponent<DropMeMenu>().respectiveImage[0] = Botoes[0].transform.GetChild(0).gameObject;//atribui ao GameSpot qual seu botão/imagem referente
     }
 
     
