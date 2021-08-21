@@ -1,0 +1,3 @@
+1629519796_15.png;1;8;/storage/app/public/images/elem//1629519796_15.png
+1629519804_14.png;1;21;/storage/app/public/images/elem//1629519804_14.png
+1629519833_fundo.jpg;0;0;/storage/app/public/images/background//1629519833_fundo.jpg
