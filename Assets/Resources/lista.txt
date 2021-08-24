@@ -1,0 +1,3 @@
+1629768710_fundopraia.jpg;0;0;/storage/app/public/images/background//1629768710_fundopraia.jpg
+1629768726_arvrê.png;1;2;/storage/app/public/images/elem//1629768726_arvrê.png
+1629768798_dogue.png;1;53;/storage/app/public/images/elem//1629768798_dogue.png

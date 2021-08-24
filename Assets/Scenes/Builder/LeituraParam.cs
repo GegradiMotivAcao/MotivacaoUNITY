@@ -88,14 +88,16 @@ public class LeituraParam : MonoBehaviour
                 
             }
             
+            //ALTERAR - CASO NÃO TENHA A POSIÇÃO, EXCLUIR O BOTÃO E O GAMESPOT
+
             if(int.Parse(leitura[1]) != 0){ 
                 bt = Sprite.Create( texture, new Rect(0, 0, texture.width, texture.height), new Vector2(texture.width/2, texture.height/2) );
                 //imagem = Resources.Load<Sprite>(leitura[0]);
                 SpritesBotoes.Add(bt);
 
-                Botoes[i].transform.GetChild(0).GetComponent<DragMeMenu>().spot = GSs[i]; //atribui ao botão qual seu GameSpot referente
-                Botoes[i].transform.GetChild(0).GetComponent<Image>().sprite = SpritesBotoes[i];
-                GSs[i].GetComponent<DropMeMenu>().respectiveImage[0] = Botoes[i].transform.GetChild(0).gameObject;//atribui ao GameSpot qual seu botão/imagem referente
+                Botoes[int.Parse(leitura[2])].transform.GetChild(0).GetComponent<DragMeMenu>().spot = GSs[int.Parse(leitura[2])]; //atribui ao botão qual seu GameSpot referente
+                Botoes[int.Parse(leitura[2])].transform.GetChild(0).GetComponent<Image>().sprite = SpritesBotoes[i];
+                GSs[int.Parse(leitura[2])].GetComponent<DropMeMenu>().respectiveImage[0] = Botoes[int.Parse(leitura[2])].transform.GetChild(0).gameObject;//atribui ao GameSpot qual seu botão/imagem referente
                 i +=1;
             }
             

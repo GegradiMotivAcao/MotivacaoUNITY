@@ -9,9 +9,20 @@ public class DragMeMenu : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 {
 	public bool dragOnSurfaces = true;
 	public GameObject spot;
+	public GameObject menuElem;
+	public GameObject menuVeg;
+	public GameObject menuTrash;
+
+
 
 	private Dictionary<int, GameObject> m_DraggingIcons = new Dictionary<int, GameObject> ();
 	private Dictionary<int, RectTransform> m_DraggingPlanes = new Dictionary<int, RectTransform> ();
+
+
+	void Start(){
+		menuElem = GameObject.Find("menu_elementos");
+	}
+
 
 	public void OnBeginDrag (PointerEventData eventData)
 	{
@@ -43,6 +54,9 @@ public class DragMeMenu : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         c.a = 0.65f;
         icone.color = c;
 
+        //DESATIVAR RAYCAST MENU ENQUANTO ARRASTA
+        menuElem.GetComponent<Image>().raycastTarget = false;
+        menuElem.transform.GetChild(0).GetComponent<Image>().raycastTarget = false;
 
 		if (dragOnSurfaces)
 			m_DraggingPlanes [eventData.pointerId] = transform as RectTransform;
@@ -90,6 +104,9 @@ public class DragMeMenu : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 		}
 
 		m_DraggingIcons [eventData.pointerId] = null;
+		//REATIVAR RAYCAST MENU DEPOIS DE ARRASTAR
+		menuElem.GetComponent<Image>().raycastTarget = true;
+        menuElem.transform.GetChild(0).GetComponent<Image>().raycastTarget = true;
 
 	}
 
