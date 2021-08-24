@@ -38,7 +38,7 @@ public class LeituraParam : MonoBehaviour
 	public List<Sprite>SpritesBotoes = new List<Sprite>(0);
     public Sprite Fundo;
     public GameObject LocalFundo;
-	public Sprite bosta;
+	public Sprite bt;
 	public List<GameObject> GSs;
 	public List<GameObject> Botoes;
 	public TextAsset arq;
@@ -89,9 +89,9 @@ public class LeituraParam : MonoBehaviour
             }
             
             if(int.Parse(leitura[1]) != 0){ 
-                bosta = Sprite.Create( texture, new Rect(0, 0, texture.width, texture.height), new Vector2(texture.width/2, texture.height/2) );
+                bt = Sprite.Create( texture, new Rect(0, 0, texture.width, texture.height), new Vector2(texture.width/2, texture.height/2) );
                 //imagem = Resources.Load<Sprite>(leitura[0]);
-                SpritesBotoes.Add(bosta);
+                SpritesBotoes.Add(bt);
 
                 Botoes[i].transform.GetChild(0).GetComponent<DragMeMenu>().spot = GSs[i]; //atribui ao botão qual seu GameSpot referente
                 Botoes[i].transform.GetChild(0).GetComponent<Image>().sprite = SpritesBotoes[i];

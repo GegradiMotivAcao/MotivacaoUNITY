@@ -23,7 +23,7 @@ public class DragMeMenu : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 		// We have clicked something that can be dragged.
 		// What we want to do is create an icon for this.
 		m_DraggingIcons [eventData.pointerId] = new GameObject ("icon");
-
+		
 		m_DraggingIcons [eventData.pointerId].transform.SetParent (canvas.transform, false);
 		m_DraggingIcons [eventData.pointerId].transform.SetAsLastSibling ();
 
@@ -37,6 +37,12 @@ public class DragMeMenu : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 		image.SetNativeSize ();
 
 		image.transform.localScale = new Vector3 (0.4f, 0.4f, 0.4f);
+		//add transparency to dragged image/icon
+		var icone = m_DraggingIcons [eventData.pointerId].GetComponent<Image>();
+		Color c = icone.color;
+        c.a = 0.65f;
+        icone.color = c;
+
 
 		if (dragOnSurfaces)
 			m_DraggingPlanes [eventData.pointerId] = transform as RectTransform;
