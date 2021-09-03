@@ -64,8 +64,8 @@ public class BuilderLinhaComando
         //FileUtil.CopyFileOrDirectory("Assets/Templates/Readme.txt", path + "Readme.txt");
 
         // Run the game (Process class from System.Diagnostics).
-        Process proc = new Process();
+       /* Process proc = new Process();
         proc.StartInfo.FileName = path + "/testeLinhaComando.exe";
-        proc.Start();
+        proc.Start();*/
     }
 }

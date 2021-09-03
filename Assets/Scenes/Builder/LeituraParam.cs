@@ -44,20 +44,19 @@ public class LeituraParam : MonoBehaviour
 	public TextAsset arq;
 	private string theWholeFileAsOneLongString;
  	private List<string> eachLine;
- 	 private DragMeMenu scriptElem;
-	[MenuItem("AssetDatabase/LoadAssetExample")]
-    static void ImportExample()
-    {
-        
-    
-    }
+ 	private DragMeMenu scriptElem;
+	
     // Start is called before the first frame update
     void Start()
     {	
 
     	Sprite imagem;
-        arq = (TextAsset)AssetDatabase.LoadAssetAtPath("Assets/Resources/lista.txt", typeof(TextAsset));
-        theWholeFileAsOneLongString = arq.text;
+    	string path = "Assets/Resources/lista.txt";
+       //Read the text from directly from the test.txt file
+        //arq = (TextAsset)AssetDatabase.LoadAssetAtPath("Assets/Resources/lista.txt", typeof(TextAsset));
+        StreamReader reader = new StreamReader(path);
+       	//Debug.Log(reader.ReadToEnd());
+        theWholeFileAsOneLongString = reader.ReadToEnd();
         int i=0;
      eachLine = new List<string>();
      eachLine.AddRange(theWholeFileAsOneLongString.Split("\n"[0]) );
