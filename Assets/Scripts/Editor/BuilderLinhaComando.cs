@@ -40,9 +40,18 @@ class BuilderLinhaComando
 // C# example.
 using UnityEditor;
 using System.Diagnostics;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using System.IO;
 
-public class BuilderLinhaComando 
-{
+
+public class BuilderLinhaComando : MonoBehaviour // n tinha mono
+{   
+    [SerializeField]
+    public GameObject teste;
+
     [MenuItem("MyTools/Windows Build With Postprocess")]
     public static void PerformBuild ()
     {
@@ -52,11 +61,7 @@ public class BuilderLinhaComando
                             "Assets/Scenes/TelaInicial.unity",
                             "Assets/Scenes/Creditos.unity",
                             "Assets/Scenes/Meu.unity",
-                            "Assets/Scenes/imagemCena001.unity",
-                            "Assets/Scenes/imagemCena003.unity",
-                            "Assets/Scenes/imagemCena004.unity",
-                            "Assets/Scenes/imagemCena005.unity",
-                            "Assets/Scenes/imagemCena006.unity"};
+                            "Assets/Scenes/Builder/imagemCenaBuilder.unity"};
         // Build player.
         BuildPipeline.BuildPlayer(levels, path + "/testeLinhaComando.exe", BuildTarget.StandaloneWindows, BuildOptions.None);
 

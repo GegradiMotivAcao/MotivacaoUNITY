@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System.IO;
 
 
+
 public class objetos
 	{
     // Auto-implemented properties.
@@ -41,7 +42,9 @@ public class LeituraParam : MonoBehaviour
 	public Sprite bt;
 	public List<GameObject> GSs;
 	public List<GameObject> Botoes;
-	public TextAsset arq;
+	public Texture2D tex;
+
+	//public TextAsset arq;
 	private string theWholeFileAsOneLongString;
  	private List<string> eachLine;
  	private DragMeMenu scriptElem;
@@ -51,12 +54,21 @@ public class LeituraParam : MonoBehaviour
     {	
 
     	Sprite imagem;
-    	string path = "Assets/Resources/lista.txt";
+    	//string path = "Assets/Resources/lista.txt";
        //Read the text from directly from the test.txt file
         //arq = (TextAsset)AssetDatabase.LoadAssetAtPath("Assets/Resources/lista.txt", typeof(TextAsset));
-        StreamReader reader = new StreamReader(path);
+        //StreamReader reader = new StreamReader(path);
        	//Debug.Log(reader.ReadToEnd());
-        theWholeFileAsOneLongString = reader.ReadToEnd();
+
+        //Load a text file (Assets/Resources/Text/textFile01.txt)
+        //arq = Resources.Load<TextAsset>("lista");
+        //TextAsset arq = Resources.Load("lista") as TextAsset;
+        TextAsset arq = Resources.Load<TextAsset>("lista");
+
+
+
+        Debug.Log(arq.text);
+        theWholeFileAsOneLongString = arq.text;
         int i=0;
      eachLine = new List<string>();
      eachLine.AddRange(theWholeFileAsOneLongString.Split("\n"[0]) );
@@ -65,24 +77,26 @@ public class LeituraParam : MonoBehaviour
 
     	foreach(string line in eachLine)
 		{   
-            //CRIAR AQUI BOTÃO DINAMICAMENTE - DUPLICANDO 1 EXISTENTE 
+             
     	  	string[] leitura = line.Split(';');
     	  	//Objs.Add(new objetos(leitura[0],leitura[1],leitura[2],leitura[3]));
 
-    	  	string filePath = "Assets/Resources/"+leitura[0];
-            Debug.Log(filePath);
             Texture2D texture = null;
             byte[] fileData;
  
-            if ( File.Exists(filePath) )
+            if (arq)
             {
-                fileData = File.ReadAllBytes(filePath);
-                texture = new Texture2D(2, 2);
-                texture.LoadImage(fileData);
+                Sprite loco = Resources.Load(leitura[0].ToString(), typeof(Sprite)) as Sprite;
+
+                Debug.Log(leitura[0].ToString());
+                var lido = leitura[0].TrimEnd('.', 'j', 'p', 'n', 'g'); // good luck, have fun
+                Debug.Log("Cortado: " + lido);
+				tex = Resources.Load<Texture2D>(lido);
+
             }
 
             if(int.Parse(leitura[1]) == 0){ 
-                Fundo = Sprite.Create( texture, new Rect(0, 0, texture.width, texture.height), new Vector2(texture.width/2, texture.height/2) );
+                Fundo = Sprite.Create( tex, new Rect(0, 0, tex.width, tex.height), new Vector2(tex.width/2, tex.height/2) );
                LocalFundo.GetComponent<Image>().sprite = Fundo;
                 
             }
@@ -90,7 +104,7 @@ public class LeituraParam : MonoBehaviour
             //ALTERAR - CASO NÃO TENHA A POSIÇÃO, EXCLUIR O BOTÃO E O GAMESPOT
 
             if(int.Parse(leitura[1]) != 0){ 
-                bt = Sprite.Create( texture, new Rect(0, 0, texture.width, texture.height), new Vector2(texture.width/2, texture.height/2) );
+                bt = Sprite.Create( tex, new Rect(0, 0, tex.width, tex.height), new Vector2(tex.width/2, tex.height/2) );
                 //imagem = Resources.Load<Sprite>(leitura[0]);
                 SpritesBotoes.Add(bt);
 
