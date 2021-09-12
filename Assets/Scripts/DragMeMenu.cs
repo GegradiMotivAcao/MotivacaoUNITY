@@ -73,7 +73,7 @@ public class DragMeMenu : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
 		GameObject[] gos = eventData.hovered.ToArray ();
 		foreach (GameObject go in gos) {
-			if (go.GetComponent<DropMeMenu> () == spot.GetComponent <DropMeMenu> ())
+			if (go.GetComponent<DropMeMenu> () == spot.GetComponent <DropMeMenu> ()) //COMPARAÇÃO PARA ATRIBUIÇÃO
 				go.transform.SetAsLastSibling ();
 		}
 	}
