@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -53,7 +54,7 @@ public class LeituraParam : MonoBehaviour
     void Start()
     {	
 
-    	Sprite imagem;
+    	//Sprite imagem;
     	//string path = "Assets/Resources/lista.txt";
        //Read the text from directly from the test.txt file
         //arq = (TextAsset)AssetDatabase.LoadAssetAtPath("Assets/Resources/lista.txt", typeof(TextAsset));
@@ -81,8 +82,8 @@ public class LeituraParam : MonoBehaviour
     	  	string[] leitura = line.Split(';');
     	  	//Objs.Add(new objetos(leitura[0],leitura[1],leitura[2],leitura[3]));
 
-            Texture2D texture = null;
-            byte[] fileData;
+            //Texture2D texture = null;
+            //byte[] fileData;
  
             if (arq)
             {
@@ -140,5 +141,5 @@ public class LeituraParam : MonoBehaviour
     void Update()
     {
         
-    }
-}
+    } 
+} 
