@@ -11,6 +11,8 @@ public class DropMeMenu : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 	private Color normalColor;
 	public Color highlightColor = Color.yellow;
 
+	
+
 	public void OnEnable ()
 	{
 		if (containerImage != null)
@@ -22,15 +24,15 @@ public class DropMeMenu : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 		if (receivingImage == null)
 			return;
 
-		/*var originalObj = data.pointerDrag;											   // IF ANTI-BAGUNÇA >:(
+		var originalObj = data.pointerDrag;											   // IF ANTI-BAGUNÇA >:(
 		if ( (originalObj != respectiveImage[0]) && (originalObj != respectiveImage[1]) ) //Aqui ocorre a verificação de que imagem vai em qual gamespot
 			return;    																	 // Se desativar, pode dropar em qualquer local
-		*/
+		
 
 		//PARA PEGAR SO AS IMGENS NO DRAG
-		var originalObj = data.pointerDrag;											   
-		if ( !(originalObj.gameObject.CompareTag("imagem")) ) //se não for imagem para
-			return;
+		//var originalObj = data.pointerDrag;											   
+		//if ( !(originalObj.gameObject.CompareTag("imagem")) ) //se não for imagem para
+			//return;
 
 		Sprite dropSprite = GetDropSprite (data);
 		if (dropSprite != null)
@@ -49,10 +51,10 @@ public class DropMeMenu : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 
 		//Debug.Break();
 
-		/*var originalObj = data.pointerDrag; 												// IF ANTI-BAGUNÇA part2 - O império contra ataca
+		var originalObj = data.pointerDrag; 												// IF ANTI-BAGUNÇA part2 - O império contra ataca
 		if ( (originalObj != respectiveImage[0]) && (originalObj != respectiveImage[1]) )   // Aqui ele verifica se mostra o highlight apenas para a imagem "certa"
-			return;*/																		// Desativando conseguimos ver o highlight em qualquer spot pra qqlr imagem
-		
+			return;																	// Desativando conseguimos ver o highlight em qualquer spot pra qqlr imagem
+	
 		Sprite dropSprite = GetDropSprite (data);
 		if (dropSprite != null) {
 			this.transform.SetAsLastSibling ();
@@ -109,14 +111,26 @@ public class DropMeMenu : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 		return srcImage.sprite.rect.height * 20;
 	}
 
-	private void EraseDropSprite (PointerEventData data)
+	public void EraseDropSprite ()
 	{
-		GameObject go = data.pointerDrag;
+		GameObject go = transform.GetChild(0).gameObject;;
 		
 		Color c = go.GetComponent<Image> ().color;
 		c.a = 0;
-		go.GetComponent<Image> ().color = c;
+		go.GetComponent<Image>().color = c;
 		
-		//		go.SetActive (false);
+				//go.SetActive (false);
 	}
+
+	void Update ()
+ {
+     if (Input.GetMouseButtonDown(0)) // If the space bar is pushed down
+     {
+         EraseDropSprite(); // call method to change sprite
+     }
+ }
+
+ 
+
+
 }
