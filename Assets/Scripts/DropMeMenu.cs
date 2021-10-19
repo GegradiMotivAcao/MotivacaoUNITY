@@ -20,7 +20,7 @@ public class DropMeMenu : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 	{
 		toggle_apagar = button_apagar.GetComponent<Toggle> ();
 		AddPhysics2DRaycaster();
-
+		//adicionar gameobject.find  apagar
 	}
 
 	
