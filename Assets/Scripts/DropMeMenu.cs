@@ -2,14 +2,26 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
-public class DropMeMenu : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
+
+public class DropMeMenu : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler , IPointerDownHandler
 {
 	public Image containerImage;
 	public Image receivingImage;
 	public GameObject[] respectiveImage;
 	private Color normalColor;
 	public Color highlightColor = Color.yellow;
+
+	public GameObject button_apagar;
+	public Toggle toggle_apagar;
+
+	void Start ()
+	{
+		toggle_apagar = button_apagar.GetComponent<Toggle> ();
+		AddPhysics2DRaycaster();
+
+	}
 
 	
 
@@ -122,15 +134,24 @@ public class DropMeMenu : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 				//go.SetActive (false);
 	}
 
-	void Update ()
- {
-     if (Input.GetMouseButtonDown(0)) // If the space bar is pushed down
-     {
-         EraseDropSprite(); // call method to change sprite
-     }
- }
+    public void OnPointerDown(PointerEventData eventData) // clicando no objeto
+    {
+       // Debug.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+    	Debug.Log("clincado");
+    	if (!toggle_apagar.isOn){//botão de apagar está ligado??
+			return; }
+		
+         EraseDropSprite(); // deixa o sprite invisivel "excluir"
+     
+    }
 
- 
-
+    private void AddPhysics2DRaycaster()
+    {
+        Physics2DRaycaster physicsRaycaster = FindObjectOfType<Physics2DRaycaster>();
+        if (physicsRaycaster == null)
+        {
+            Camera.main.gameObject.AddComponent<Physics2DRaycaster>();
+        }
+    }
 
 }
