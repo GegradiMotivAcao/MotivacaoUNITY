@@ -37,10 +37,18 @@ public class DropMeMenu : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 		if (receivingImage == null)
 			return;
 
-		// var originalObj = data.pointerDrag;											   // IF ANTI-BAGUNÇA >:(
-		// if ( (originalObj != respectiveImage[0]) && (originalObj != respectiveImage[1]) ) //Aqui ocorre a verificação de que imagem vai em qual gamespot
-		// 	return;    																	 // Se desativar, pode dropar em qualquer local
+		 var originalObj = data.pointerDrag;											   // IF ANTI-BAGUNÇA >:(
+		 if ( (originalObj != respectiveImage[0]) && (originalObj != respectiveImage[1]) && (originalObj != respectiveImage[2]) && (originalObj != respectiveImage[3]) && (originalObj != respectiveImage[4]) ) //Aqui ocorre a verificação de que imagem vai em qual gamespot
+		 	return;    																	 // Se desativar, pode dropar em qualquer local
 		
+
+		//foreach(GameObject imagem in respectiveImage)
+              //{
+                //if (originalObj != imagem){
+                //	return;	
+               // }
+           // }
+
 
 		//PARA PEGAR SO AS IMGENS NO DRAG
 		//var originalObj = data.pointerDrag;											   
@@ -64,10 +72,17 @@ public class DropMeMenu : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 
 		//Debug.Break();
 
-		// var originalObj = data.pointerDrag; 												// IF ANTI-BAGUNÇA part2 - O império contra ataca
-		// if ( (originalObj != respectiveImage[0]) && (originalObj != respectiveImage[1]) )   // Aqui ele verifica se mostra o highlight apenas para a imagem "certa"
-		// 	return;																	// Desativando conseguimos ver o highlight em qualquer spot pra qqlr imagem
-	
+		 var originalObj = data.pointerDrag; 												// IF ANTI-BAGUNÇA part2 - O império contra ataca
+		 if ( (originalObj != respectiveImage[0]) && (originalObj != respectiveImage[1]) && (originalObj != respectiveImage[2]) && (originalObj != respectiveImage[3]) && (originalObj != respectiveImage[4]) )   // Aqui ele verifica se mostra o highlight apenas para a imagem "certa"
+		 	return;	
+		 																	// Desativando conseguimos ver o highlight em qualquer spot pra qqlr imagem
+		/*foreach(GameObject imagem in respectiveImage)
+              {
+                if (originalObj != imagem){
+                	return;	
+                }
+            }*/
+
 		Sprite dropSprite = GetDropSprite (data);
 		if (dropSprite != null) {
 			this.transform.SetAsLastSibling ();
